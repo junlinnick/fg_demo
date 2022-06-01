@@ -49,11 +49,15 @@ known_faces = []
 known_names = []
 
 for name in os.listdir(KNOWN_FACES_DIR):
+    if len(known_faces) >=10:
+        break
     for filename in os.listdir(f"{KNOWN_FACES_DIR}/{name}"):
         image=face_recognition.load_image_file(f"{KNOWN_FACES_DIR}/{name}/{filename}")
+        print("---processing name:",name)
         encoding=face_recognition.face_encodings(image)[0]
         known_faces.append(encoding)
         known_names.append(name)
+        
 
 print("processing unknown faces")
 for filename in os.listdir(UNKNOWN_FACES_DIR):
