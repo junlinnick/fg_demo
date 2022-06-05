@@ -39,6 +39,7 @@ pip install cmake -i https://pypi.tuna.tsinghua.edu.cn/simple
 pip install face_recognition -i https://pypi.tuna.tsinghua.edu.cn/simple
 pip install django -i https://pypi.tuna.tsinghua.edu.cn/simple
 pip install pandas -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install jsonfield  -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 
 

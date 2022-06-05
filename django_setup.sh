@@ -10,3 +10,9 @@ cd /data/checkin
 django-admin startproject backend 
 
 python manage.py migrate
+
+
+python manage.py startapp student_info 
+
+python manage.py makemigrations student_info
+python manage.py migrate
