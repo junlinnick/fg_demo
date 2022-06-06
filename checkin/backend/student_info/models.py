@@ -39,6 +39,9 @@ class StudentCheckInfo(models.Model):
     class Meta:
         db_table='student_check_info'
         app_label='student_info'
-
+        
+class mypicture(models.Model):
+    user = models.CharField(max_length=64)
+    photo = models.ImageField(upload_to='photos', default='user1.jpg')
 
 
