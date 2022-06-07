@@ -22,25 +22,33 @@ setup_path=/data/checkin/setup_files
 mkdir -p /etc/yum.repos.d.bak
 mv /etc/yum.repos.d/*  /etc/yum.repos.d.bak
 mv $setup_path/.repo  /etc/yum.repos.d
+curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 yum clean all
 yum make cache
+yum install wget -Y
+cd /data
+wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-2021.05-Linux-x86_64.sh
 #install anaconda
-bash ${setup_files}/Anaconda3-2021.05-Linux-x86_64.sh-b
-echo "export PATH=/root/anaconda3/bin:$PATH" >> /root/.bashrc
-source ~/.bashrc
+bash ${setup_files}/Anaconda3-2021.05-Linux-x86_64.sh -b
+
+
 
 conda create -n env_dlib python=3.8 -y 
 
+conda init
+
 conda activate env_dlib
 
-conda install -c conda-forge dlib  -y
+
+
+
 
 pip install cmake -i https://pypi.tuna.tsinghua.edu.cn/simple
 pip install face_recognition -i https://pypi.tuna.tsinghua.edu.cn/simple
 pip install django -i https://pypi.tuna.tsinghua.edu.cn/simple
 pip install pandas -i https://pypi.tuna.tsinghua.edu.cn/simple
 pip install jsonfield  -i https://pypi.tuna.tsinghua.edu.cn/simple
-pip install Pillow  -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install opencv_python  -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 
 \cp  -f /etc/hosts.bak /etc/hosts

@@ -34,6 +34,6 @@ docker exec $container_name /bin/bash -c  "rm -r  $container_setup_path"
 
 docker commit -m "$comment"  -a "author" $container_name $img_name:${image_tag}
 ##test#
- docker run -v /home/junlin/project/face_recognition_jl/checkin:/data/checkin -d  -p  8080:8080 --name checkin_sys_test1  --privileged=true 8652b9f0cb4c /usr/sbin/init
+ docker run -v /Users/mengzi/documents/project/face_recognition_jl/checkin:/data/checkin -d  -p  8080:8080 --name checkin_sys_test1  --privileged=true eeb6ee3f44bd /usr/sbin/init
 
  python manage.py runserver 0:8080
