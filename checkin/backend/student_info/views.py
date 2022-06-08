@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from student_info.models import StudentBaseInfo
+from student_info.models import StudentBaseInfo, StudentImage
 import json
+import os
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, HttpResponse
 from student_info import models
 # Create your views here.
@@ -62,14 +64,14 @@ class Student(object):
             destination.close()
 
             pictureLocation = os.path.join('facePhoto', myFile.name)
-            data = StudentBaseInfo()
+            data = StudentImage()
             data.picture = pictureLocation
-            stu_name = request.POST['stu_name']
+            # stu_name = request.POST['stu_name']
             stu_no = request.POST['stu_no']
-            data.names = stu_name
+            data.stu_no = stu_no
             data.save()
 
-            red.set(stu_name, stu_no,pictureLocation)
+            # red.set(stu_no,pictureLocation)
 
             return HttpResponseRedirect('/index/')
 

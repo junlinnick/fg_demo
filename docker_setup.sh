@@ -37,3 +37,5 @@ docker commit -m "$comment"  -a "author" $container_name $img_name:${image_tag}
  docker run -v /Users/mengzi/documents/project/face_recognition_jl/checkin:/data/checkin -d  -p  8080:8080 --name checkin_sys_test1  --privileged=true eeb6ee3f44bd /usr/sbin/init
 
  python manage.py runserver 0:8080
+docker build -t opencv-webcam .
+docker run -it -v $PWD:/app/ --device=/dev/video0:/dev/video0 -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY opencv-webcam bash

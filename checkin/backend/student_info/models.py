@@ -10,11 +10,10 @@ class StudentBaseInfo(models.Model):
     id = models.AutoField(primary_key=True, editable=False)
     stu_name=models.CharField(max_length=50, verbose_name="学生名称")
     stu_no=models.CharField(max_length=50, verbose_name="学生编号", unique = True)
-    picture = models.CharField(max_length=128, verbose_name='picture')
-
-    def __str__(self):
-        return '<names: {}>'.format(self.stu_name)
-
+    class_no = models.IntegerField(default=-1,verbose_name="学生班级号")
+    grade_no = models.IntegerField(default=-1,verbose_name="学生年级号")
+    def __str__(self) -> str:
+        return self.name
     @classmethod
     def get_all(cls):
         return cls.objects.all()
@@ -25,7 +24,22 @@ class StudentBaseInfo(models.Model):
         db_table='student_base_info'
         app_label='student_info'
 
+class StudentImage(models.Model):
+    stu_no=models.CharField(max_length=50, verbose_name="学生编号", unique = True)
+    picture = models.CharField(max_length=128, verbose_name='picture')
+    def __str__(self):
+        return '<student_no: {}>'.format(self.stu_no)
 
+    @classmethod
+    def get_all(cls):
+        return cls.objects.all()
+
+    def get_no(self):
+        return self.stu_no
+    class Meta:
+        db_table='student_image_info'
+        app_label='student_info'
+    
 
 
 
@@ -53,10 +67,10 @@ class StudentCheckInfo(models.Model):
         db_table='student_check_info'
         app_label='student_info'
         
-class mypicture(models.Model):
-    user = models.CharField(max_length=64)
+# class mypicture(models.Model):
+#     user = models.CharField(max_length=64)
 
-    photo = models.ImageField(upload_to='photos', default='user1.jpg')
+#     photo = models.ImageField(upload_to='photos', default='user1.jpg')
 
 
 
